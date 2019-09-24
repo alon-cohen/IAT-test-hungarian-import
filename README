@@ -45,6 +45,8 @@ USE:
 
 5) Direct participants to your IAT! (e.g., [yourserver.com]/IAT)
 
+6) php -S localhost:8000
+
 
 OUTPUT:
 -------
