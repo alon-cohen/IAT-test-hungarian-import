@@ -1,1 +1,1 @@
-{"active":"Fogyaszt\u00f3i Etnocentrizmus","available":{"0":"Empty","3":"Fogyaszt\u00f3i Etnocentrizmus","2":"Race","1":"Science"}}
+{"active":"Fogyaszt\u00f3i Etnocentrizmus","available":{"0":"Fogyaszt\u00f3i Etnocentrizmus"}}
