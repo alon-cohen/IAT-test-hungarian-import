@@ -1,1 +1,1 @@
-{"active":"Fogyaszt\u00f3i Etnocentrizmus","available":{"0":"Fogyaszt\u00f3i Etnocentrizmus"}}
+{"active":"Magyar termék - Import termék","available":["Magyar termék - Import termék"]}

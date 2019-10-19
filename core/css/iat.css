@@ -1,11 +1,45 @@
 body {
     background:none repeat scroll 0 0 #FFFFFF;
     border:0 none;
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px;
+	line-height: 1.6;
+}
+
+table {
+	border-spacing: 20px;
+	line-height: 1.6;
+}
+
+input[type=submit] {
+	font-size: 16px;
+	font-weight: 500;
+	padding: 5px 30px 5px;
+	background-color: peachpuff;
+	color: black; 
+	border-radius: 4px;
+	border: 2px solid peachpuff;
+}
+input[type=submit]:hover {
+	font-size: 16px;
+	background-color: white;
+	color: black;
+	border: 2px solid peachpuff;
 }
 
 #instructions
 {
     width: 800px;
+    line-height: 1.6;
 }
 
 #experiment_frame
