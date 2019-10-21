@@ -498,10 +498,10 @@ if( isset($_REQUEST['op']) )
 					echo 'ERROR: ' . $e->getMessage();
 					break;
 				}*/
-				$servername = "127.0.0.1";
+				$servername = "database-1.cqjmprl2dfkt.us-east-1.rds.amazonaws.com";
 				$dbname = "IAT555";
-				$username = "IATexp555";
-				$password = "myIAT";
+				$username = "admin";
+				$password = "IAT12345!";
 
 				try {
 					$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -560,10 +560,16 @@ if( isset($_REQUEST['op']) )
 							echo 'ERROR - db do not exists';
                 				//error_log(print_r("Database doesn't exist", TRUE));
 						}*/
-						$servername = "127.0.0.1";
+						
+						// $servername = "127.0.0.1";
+						// $dbname = "IAT555";
+						// $username = "IATexp555";
+						// $password = "myIAT";
+						
+						$servername = "database-1.cqjmprl2dfkt.us-east-1.rds.amazonaws.com";
 						$dbname = "IAT555";
-						$username = "IATexp555";
-						$password = "myIAT";
+						$username = "admin";
+						$password = "IAT12345!";
 
 						try {
 							$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -586,10 +592,10 @@ if( isset($_REQUEST['op']) )
 					{
 						//$dsn = "mysql:host=localhost";
 						//$pdo = new PDO($dsn, "IATexp555","myIAT");
-						$servername = "127.0.0.1";
+						$servername = "database-1.cqjmprl2dfkt.us-east-1.rds.amazonaws.com";
 						$dbname = "IAT555";
-						$username = "IATexp555";
-						$password = "myIAT";
+						$username = "admin";
+						$password = "IAT12345!";
 
 						$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 						$pdo->query("USE `IAT555`;");
