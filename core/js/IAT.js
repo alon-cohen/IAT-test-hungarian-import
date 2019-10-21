@@ -69,7 +69,7 @@ function loadInstructions(stage)
 		{
 			$.get("core/instruct2.html", function(data) {
 				$("#instructions").html(data);
-
+				$(".IATname").html(template.name);
 				$("#clabel1").html(template.cat1.label);
 				$("#clabel2").html(template.cat2.label);
 				$("#clabelA").html(template.catA.label);

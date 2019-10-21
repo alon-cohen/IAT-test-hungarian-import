@@ -1,21 +1,36 @@
 body {
     background:none repeat scroll 0 0 #FFFFFF;
     border:0 none;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.6;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 table, th, td {
-	border: 1px solid black;
+	border: 1px solid #ddd;
 	border-collapse: collapse;
 	padding: 5px;
 	line-height: 1.6;
+	border-spacing: 20px;
 }
 
-table {
-	border-spacing: 20px;
-	line-height: 1.6;
+th {
+	text-align: left;
+}
+
+tr {
+	-webkit-tap-highlight-color: transparent;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.42857;
+	color: #333333;
+	border-collapse: collapse;
+	border-spacing: 0;
+	box-sizing: border-box;
+}
+
+tr.active {
+	background-color: #f5f5f5;
 }
 
 input[type=submit] {
@@ -53,6 +68,38 @@ a.button:hover {
 	border: 2px solid peachpuff;
 }
 
+div.instructions-box {
+	margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    border: solid #bce8f1 1px;
+}
+
+div.box-header {
+	-webkit-tap-highlight-color: transparent;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.42857;
+	box-sizing: border-box;
+	padding: 1px 15px;
+	border-bottom: 1px solid transparent;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+
+div.box-body {
+	-webkit-tap-highlight-color: transparent;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.42857;
+	color: #333333;
+	box-sizing: border-box;
+	padding: 15px;
+}
+
 #instructions
 {
     width: 800px;
@@ -63,9 +110,9 @@ a.button:hover {
 {
     margin-left: auto;
     margin-right: auto;
-    width:500px;
+    width:750px;
     height: 500px;
-    border: solid black 1px;
+    border: solid lightblue 5px;
 }
 
 #header
@@ -97,7 +144,7 @@ a.button:hover {
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
-    width: 600px;
+    width: 700px;
 }
 
 .itemdiv
