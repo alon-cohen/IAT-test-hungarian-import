@@ -23,6 +23,14 @@ function initialize()
 			template = data;
 			$.get("core/instruct0.html", function(data) {
 				$("#instructions").html(data);
+				$(".IATname").html(template.name);
+				if(	template.catA.itemtype == "img" || 
+					template.catB.itemtype == "img" || 
+					template.cat1.itemtype == "img" || 
+					template.cat2.itemtype == "img")
+				{
+					$("#andpics").html(" and pictures ");
+				}
 				$("#subID").val(randomString(10));
 			});
 		});
@@ -40,14 +48,14 @@ function loadInstructions(stage)
 		{
 			$.get("core/instruct1.html", function(data) {
 				$("#instructions").html(data);
-				$(".IATname").html(template.name);
-				if(	template.catA.itemtype == "img" || 
-					template.catB.itemtype == "img" || 
-					template.cat1.itemtype == "img" || 
-					template.cat2.itemtype == "img")
-				{
-					$("#andpics").html(" and pictures ");
-				}
+				// $(".IATname").html(template.name);
+				// if(	template.catA.itemtype == "img" || 
+				// 	template.catB.itemtype == "img" || 
+				// 	template.cat1.itemtype == "img" || 
+				// 	template.cat2.itemtype == "img")
+				// {
+				// 	$("#andpics").html(" and pictures ");
+				// }
 			});
 		}
 		else
@@ -56,30 +64,39 @@ function loadInstructions(stage)
 		}
 		break;
 		case 'two':
-		$.get("core/instruct2.html", function(data) {
-			$("#instructions").html(data);
+		sub = $("#subID").val();
+		if(sub.search('/[^a-zA-Z0-9]/g')==-1)
+		{
+			$.get("core/instruct2.html", function(data) {
+				$("#instructions").html(data);
 
-			$("#clabel1").html(template.cat1.label);
-			$("#clabel2").html(template.cat2.label);
-			$("#clabelA").html(template.catA.label);
-			$("#clabelB").html(template.catB.label);
-			if (template.cat1.itemtype == "txt")
-				{ $("#citems1").html(template.cat1.items.join(", ")); }
-			else if (template.cat1.itemtype == "img")
-				{ $("#citems1").html(template.cat1.label + " képek"); }
-			if (template.cat2.itemtype == "txt")
-				{ $("#citems2").html(template.cat2.items.join(", ")); }
-			else if (template.cat2.itemtype == "img")
-				{ $("#citems2").html(template.cat2.label + " képek"); }
-			if (template.catA.itemtype == "txt")
-				{ $("#citemsA").html(template.catA.items.join(", ")); }
-			else if (template.catA.itemtype == "img")
-				{ $("#citemsA").html(template.catA.label + " képek"); }
-			if (template.catB.itemtype == "txt")
-				{ $("#citemsB").html(template.catB.items.join(", ")); }
-			else if (template.catB.itemtype == "img")
-				{ $("#citemsB").html(template.catB.label + " képek"); }
-		});
+				$("#clabel1").html(template.cat1.label);
+				$("#clabel2").html(template.cat2.label);
+				$("#clabelA").html(template.catA.label);
+				$("#clabelB").html(template.catB.label);
+				if (template.cat1.itemtype == "txt")
+					{ $("#citems1").html(template.cat1.items.join(", ")); }
+				else if (template.cat1.itemtype == "img")
+					{ $("#citems1").html(template.cat1.label + " képek"); }
+				if (template.cat2.itemtype == "txt")
+					{ $("#citems2").html(template.cat2.items.join(", ")); }
+				else if (template.cat2.itemtype == "img")
+					{ $("#citems2").html(template.cat2.label + " képek"); }
+				if (template.catA.itemtype == "txt")
+					{ $("#citemsA").html(template.catA.items.join(", ")); }
+				else if (template.catA.itemtype == "img")
+					{ $("#citemsA").html(template.catA.label + " képek"); }
+				if (template.catB.itemtype == "txt")
+					{ $("#citemsB").html(template.catB.items.join(", ")); }
+				else if (template.catB.itemtype == "img")
+					{ $("#citemsB").html(template.catB.label + " képek"); }
+			});
+		}
+		else
+		{
+			alert("Kérlek írd be helyesen a teljes nevedet (csak betűket használj)");
+		}
+
 		break;
 		case 'IAT':
 		$.get("core/IAT.html", function(data) {
