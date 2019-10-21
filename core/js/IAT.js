@@ -4,7 +4,7 @@ sub = '';
 clearform = true;
 
 // replace this with the link to the google form
-gframe = 'https://docs.google.com/forms/d/e/1FAIpQLSeftmB29HHGo5wBhREoCyHLccb-rQ1b4bjjx0P40ukGxaspdg/viewform?usp=pp_url';
+gframe = 'https://docs.google.com/forms/d/e/1FAIpQLSeauEuFO-tTYfTnPtdCEIGkOC9XmYVKWxsod5q6uzUFVb22dg/viewform?usp=pp_url';
 
 function randomString(length) {
 	var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -358,7 +358,7 @@ function instructionPage()
 			//'</br></br>' + '<iframe src="'+gframe+'&entry.752930099='+sub+'&embedded=true" width="500" height="500" frameborder="0" marginheight="0" marginwidth="0" onLoad="clearForm(true);">Loading...</iframe>';
 			resulttext = resultSentence + '</br>';
 			//resulttext += '<input type="submit" value="continue" onclick="window.location='+gframe+'&entry.752930099='+sub+';" />';
-			resulttext += '<a href="'+gframe+'&entry.752930099='+sub+'" class="button">Complete Test</a>';
+			resulttext += '<a href="'+gframe+'&entry.690413219='+sub+'" class="button">Complete Test</a>';
 
 			$("#experiment_frame").html(resulttext);
 		}
