@@ -59,5 +59,6 @@ T6="CREATE  TABLE IF NOT EXISTS IAT555.Result (
 
 SQL="${Q1}${Q2}${Q3}${Q4}${Q5}${T1}${T2}${T3}${T4}${T5}${T6}"
 $MYSQL -uroot -p -e "$SQL"
+## $MYSQL -u admin -p'T665577K!' -h 'database-1.cqjmprl2dfkt.us-east-1.rds.amazonaws.com' -e "$SQL"
 
 echo "Database and tables created.  Success!"
