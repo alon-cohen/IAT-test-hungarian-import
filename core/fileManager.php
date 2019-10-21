@@ -490,17 +490,33 @@ if( isset($_REQUEST['op']) )
 			if( isset($_REQUEST['data']) )
 			{	
 
-				$dsn = "mysql:host=localhost";
+				/*$dsn = "mysql:host=localhost";
 				try {
 					$pdo = new PDO($dsn, "IATexp555","myIAT");
 				}
 				catch(PDOException $e) { 
 					echo 'ERROR: ' . $e->getMessage();
 					break;
+				}*/
+				$servername = "127.0.0.1";
+				$dbname = "IAT555";
+				$username = "IATexp555";
+				$password = "myIAT";
+
+				try {
+					$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+					// set the PDO error mode to exception
+					$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+					echo "success";
+				}
+				catch(PDOException $e)
+				{
+					echo "Connection failed: " . $e->getMessage();
 				}
 
-				$dsn = "mysql:host=localhost";
-				$pdo = new PDO($dsn, "IATexp555","myIAT");
+				//$dsn = "mysql:host=localhost";
+				//$pdo = new PDO($dsn, "IATexp555","myIAT");
+				$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 				$pdo->query("USE `IAT555`;");
 
 						$sub = isset( $_REQUEST['subject'] ) ? $_REQUEST['subject'] : 'unknown2' ; //Subject Identifier
@@ -521,7 +537,7 @@ if( isset($_REQUEST['op']) )
 				}
 				
 				break;
-				
+
 				case 'checkdb':
 				if( isset($_REQUEST['template']) )
 				{
@@ -532,10 +548,10 @@ if( isset($_REQUEST['op']) )
     						//error_log(print_r("The file $filename exists", TRUE));
 					} else 
 					{
-						echo "The file $filename does not exist";
-    						//error_log(print_r("The file $filename does not exist", TRUE));
-						$dsn = "mysql:host=localhost";
-						try {
+						//echo "The file $filename does not exist\n";
+    					//error_log(print_r("The file $filename does not exist", TRUE));
+						//$dsn = "mysql:host=localhost;dbname=IAT555";
+						/*try {
 							$pdo = new PDO($dsn, "IATexp555","myIAT");
 								//error_log(print_r("Database exists", TRUE));
 							echo 'success';
@@ -543,6 +559,21 @@ if( isset($_REQUEST['op']) )
 						catch(PDOException $e) { 
 							echo 'ERROR - db do not exists';
                 				//error_log(print_r("Database doesn't exist", TRUE));
+						}*/
+						$servername = "127.0.0.1";
+						$dbname = "IAT555";
+						$username = "IATexp555";
+						$password = "myIAT";
+
+						try {
+							$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    						// set the PDO error mode to exception
+							$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+							echo "success";
+						}
+						catch(PDOException $e)
+						{
+							echo "Connection failed: " . $e->getMessage();
 						}
 					}
 				}
@@ -553,8 +584,14 @@ if( isset($_REQUEST['op']) )
 				{
 					if (isset($_REQUEST['form']) )
 					{
-						$dsn = "mysql:host=localhost";
-						$pdo = new PDO($dsn, "IATexp555","myIAT");
+						//$dsn = "mysql:host=localhost";
+						//$pdo = new PDO($dsn, "IATexp555","myIAT");
+						$servername = "127.0.0.1";
+						$dbname = "IAT555";
+						$username = "IATexp555";
+						$password = "myIAT";
+
+						$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 						$pdo->query("USE `IAT555`;");
 						$templatename=$_REQUEST['template'];
 						$showresult=$_REQUEST['showresult'];

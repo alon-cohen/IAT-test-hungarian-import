@@ -8,7 +8,7 @@ if [ ${#MYSQL} -lt "5" ]; then
 fi
 
 Q1="CREATE DATABASE IF NOT EXISTS IAT555 CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
-Q2="CREATE USER 'IATexp555'@'localhost' IDENTIFIED BY 'myIAT';"
+Q2="CREATE USER 'IATexp555'@'localhost' IDENTIFIED WITH mysql_native_password BY 'myIAT';"
 Q3="GRANT ALL ON IAT555.* TO 'IATexp555'@'localhost';"
 Q4="FLUSH PRIVILEGES;"
 

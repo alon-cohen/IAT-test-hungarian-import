@@ -58,7 +58,7 @@ function loadInstructions(stage)
 		case 'two':
 		$.get("core/instruct2.html", function(data) {
 			$("#instructions").html(data);
-			
+
 			$("#clabel1").html(template.cat1.label);
 			$("#clabel2").html(template.cat2.label);
 			$("#clabelA").html(template.catA.label);
@@ -122,7 +122,7 @@ function startIAT()
 	buildPage();
 	roundArray = initRounds();
 	instructionPage();
-	
+
 }
 
 // Adds all images to page (initially hidden) so they are pre-loaded for IAT
@@ -200,13 +200,13 @@ function initRounds()
     		stype = "both";
     		numrounds = 40;
     		break;
-    		
+
     	}
     	prevIndexA = -1; prevIndex1 = -1;
     	for (var j = 0; j<numrounds; j++)
     	{
     		var round = new IATround();
-    		
+
     		if (stype == "target")
     		{
     			round.category = (Math.random() < 0.5 ? template.catA.datalabel : template.catB.datalabel);
@@ -226,13 +226,13 @@ function initRounds()
         		round.itemtype = template.catA.itemtype;
         		if (i < 4) { round.correct = 1; }
         		else { round.correct = 2; }
-        		
+
 				// pick an item different from the last
 				do 
 				{ round.catIndex = Math.floor(Math.random()*template.catA.items.length); }
 				while (prevIndexA == round.catIndex)
 					prevIndexA = round.catIndex;
-				
+
 			}
 			else if (round.category == template.catB.datalabel)
 			{ 
@@ -265,11 +265,11 @@ function initRounds()
 				while (prevIndex1 == round.catIndex)
 					prevIndex1 = round.catIndex;
 			}	
-			
+
 			roundArray[i].push(round);
 		}
 	}
-	
+
 	return roundArray;
 }
 
@@ -285,6 +285,19 @@ function instructionPage()
 		case 1:    
 		$("#left_cat").html(open1+template.cat1.label+close1);
 		$("#right_cat").html(open1+template.cat2.label+close1);
+		// $.post("core/fileManager.php", { 'op':'checkdb', 'template':template.name }, 
+		// 	function(checkdb) {
+		// 		if(checkdb == "success")
+		// 		{
+		// 			console.log(checkdb);
+		// 			//WriteDatabase();
+		// 		}
+		// 		else
+		// 		{
+		// 			console.log("error: " + checkdb);
+		// 			//WriteFile();
+		// 		}
+		// 	});	
 		break;
 		case 2:
 		case 3:
@@ -310,11 +323,13 @@ function instructionPage()
 			function(checkdb) {
 				if(checkdb == "success")
 				{
+					console.log("writing database");
 					WriteDatabase();
 				}
 				else
 				{
-					console.log("error: " + checkdb);
+					console.log("error-alon: " + checkdb);
+					console.log("writing file");
 					WriteFile();
 				}
 			});	
@@ -327,8 +342,6 @@ function instructionPage()
 			resulttext = resultSentence + '</br>';
 			//resulttext += '<input type="submit" value="continue" onclick="window.location='+gframe+'&entry.752930099='+sub+';" />';
 			resulttext += '<a href="'+gframe+'&entry.752930099='+sub+'" class="button">Complete Test</a>';
-			
-
 
 			$("#experiment_frame").html(resulttext);
 		}
@@ -364,7 +377,7 @@ function calculateIAT()
     	compatible += Math.log(score);
     }
     compatible /= (roundArray[3].length - 1);
-    
+
 	// calculate mean log(RT) for second key trial
 	incompatible = 0;
 	for (i=1; i<roundArray[6].length; i++)
@@ -375,7 +388,7 @@ function calculateIAT()
 		incompatible += Math.log(score);
 	}
 	incompatible /= (roundArray[6].length - 1);
-	
+
     // calculate variance log(RT) for first key trial
     cvar = 0;
     for (i=1; i<roundArray[3].length; i++)
@@ -385,7 +398,7 @@ function calculateIAT()
     	if (score > 3000) { score = 3000; }
     	cvar += Math.pow((Math.log(score) - compatible),2);
     }
-    
+
 	// calculate variance log(RT) for second key trial
 	ivar = 0;
 	for (i=1; i<roundArray[6].length; i++)
@@ -398,14 +411,14 @@ function calculateIAT()
 	
 	// calculate t-value
 	tvalue = (incompatible - compatible) / Math.sqrt(((cvar/39) + (ivar/39))/40);
-	
+
     // determine effect size from t-value and create corresponding text
     if (Math.abs(tvalue) > 2.89) { severity = " <b>sokkal inkább</b> "; }
     else if (Math.abs(tvalue) > 2.64) { severity = " <b>inkább</b> "; }	
     else if (Math.abs(tvalue) > 1.99) { severity = " <b>valamivel jobban</b> "; }
     else if (Math.abs(tvalue) > 1.66) { severity = " <b>valamivel jobban</b> "; }
     else { severity = ""; }
-    
+
 	// put together feedback based on direction & magnitude
 	if (tvalue < 0 && severity != "")
 	{ 
@@ -499,7 +512,7 @@ function checkDemographics()
 	$("input[name=race]:checked").each(function() { races.push($(this).val()); });
 	income = $("#income").val();
 	education = $("#edu option:selected").val();
-	
+
     // alert(income+"\n"+parseFloat(income)+"\n");
     // $.get('getLocation.php', 
     //         { 'q': loc},
@@ -510,7 +523,7 @@ function checkDemographics()
 	// Do validation of input
 	var error = false;
 	var errmsg = "";
-	
+
 	if(gender==null)
 	{
 		error=true;
@@ -594,7 +607,7 @@ function WriteFile()
 	
 	$.post("core/fileManager.php", { 'op':'writeoutput', 'template':template.name, 
 		'subject': subject, 'data': str });	
-	
+
 	// notify user of success?
 }
 function WriteDatabase()
@@ -624,7 +637,7 @@ function WriteDatabase()
  				'errors':roundArray[i][j].errors, 'mseconds':(roundArray[i][j].endtime - roundArray[i][j].starttime) });
  		}
  	}
- 	
+
  	
 	// notify user of success?
 }
