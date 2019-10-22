@@ -356,11 +356,14 @@ function instructionPage()
 			resultSentence = calculateIAT();
 			//resulttext = '<iframe src="'+gframe+'?embedded=true" width="500" height="500" frameborder="0" marginheight="0" marginwidth="0" onLoad="clearForm(true);">Loading...</iframe>';
 			//'</br></br>' + '<iframe src="'+gframe+'&entry.752930099='+sub+'&embedded=true" width="500" height="500" frameborder="0" marginheight="0" marginwidth="0" onLoad="clearForm(true);">Loading...</iframe>';
-			resulttext = resultSentence + '</br>';
+			resulttext = resultSentence + '</br></br>';
 			//resulttext += '<input type="submit" value="continue" onclick="window.location='+gframe+'&entry.752930099='+sub+';" />';
-			resulttext += '<a href="'+gframe+'&entry.690413219='+sub+'" class="button">Complete Test</a>';
-
-			$("#experiment_frame").html(resulttext);
+			resulttext += '<div style="text-align:center"><a href="'+gframe+'&entry.690413219='+sub+'" class="button">Tovább az utolsó részhez</a></div>';
+			resultTitle = '<h3>Eredmény</h3>';
+			underInstruct = '';
+			$("experiment_frame").html(resultTitle);
+			$("#picture_frame").html(resulttext);
+			$("#under_instruct").html(underInstruct);
 		}
 		else 
 		{
@@ -436,27 +439,28 @@ function calculateIAT()
     else if (Math.abs(tvalue) > 1.66) { severity = " <b>valamivel jobban</b> "; }
     else { severity = ""; }
 
+	resulttext = "<div style='text-align:center;padding:20px'><h4>Eredmény</h4>";
 	// put together feedback based on direction & magnitude
 	if (tvalue < 0 && severity != "")
 	{ 
-		resulttext = "<div style='text-align:center;padding:20px'>Az "+openA+template.catB.label+closeA+"eket "+severity+" a "+open1+template.cat1.label+close1;
-		resulttext += " jelzőkkel kötöd össze, a "+openA+template.catA.label+closeA+"eket pedig a "+open1+template.cat2.label+close1;
-		resulttext += " jelzőkkel, mint a "+openA+template.catA.label+closeA+"eket a "+open1+template.cat1.label+close1;
-		resulttext += " jelzőkkel és az "+openA+template.catB.label+closeA+"eket a "+open1+template.cat2.label+close1+" jelzőkkel.</div>"; 
+		resulttext += "A "+openA+template.catB.label+closeA+"eket "+severity+" a "+open1+template.cat1.label+close1;
+		resulttext += " jelzőkkel kötöd össze, az "+openA+template.catA.label+closeA+"eket pedig a "+open1+template.cat2.label+close1;
+		resulttext += " jelzőkkel, mint az "+openA+template.catA.label+closeA+"eket a "+open1+template.cat1.label+close1;
+		resulttext += " jelzőkkel és a "+openA+template.catB.label+closeA+"eket a "+open1+template.cat2.label+close1+" jelzőkkel.</div>"; 
         // resulttext += "<div>incompatible: "+incompatible+" ("+(ivar/39)+"); compatible: "+compatible+" ("+(cvar/39)+"); tvalue: "+tvalue+"</div>";
     }
     else if (tvalue > 0 && severity != "")
     { 
-    	resulttext = "<div style='text-align:center;padding:20px'>A "+openA+template.catA.label+closeA+"eket "+severity+" a "+open1+template.cat1.label+close1;
+    	resulttext += "Az "+openA+template.catA.label+closeA+"eket "+severity+" a "+open1+template.cat1.label+close1;
     	resulttext += " jelzőkkel kötöd össze, a "+openA+template.catB.label+closeA+"eket pedig a "+open1+template.cat2.label+close1;
-    	resulttext += " jelzőkkel, mint az "+openA+template.catB.label+closeA+"eket a "+open1+template.cat1.label+close1;
-    	resulttext += " jelzőkkel és a "+openA+template.catA.label+closeA+"eket a "+open1+template.cat2.label+close1+" jelzőkkel.</div>"; 
+    	resulttext += " jelzőkkel, mint a "+openA+template.catB.label+closeA+"eket a "+open1+template.cat1.label+close1;
+    	resulttext += " jelzőkkel és az "+openA+template.catA.label+closeA+"eket a "+open1+template.cat2.label+close1+" jelzőkkel.</div>"; 
         // resulttext += "<div>incompatible: "+incompatible+" ("+(ivar/39)+"); compatible: "+compatible+" ("+(cvar/39)+"); tvalue: "+tvalue+"</div>";
     }
     else
     { 
-    	resulttext = "<div style='text-align:center;padding:20px'>Nem asszociálsz a "+openA+template.catA.label+closeA;
-    	resulttext += "ek esetében inkább, vagy kevésbé a "+open1+template.cat1.label+close1+"ra mint az ";
+    	resulttext += "Nem asszociálsz az "+openA+template.catA.label+closeA;
+    	resulttext += "ek esetében inkább, vagy kevésbé a "+open1+template.cat1.label+close1+"ra mint a ";
     	resulttext += openA+template.catB.label+closeA+"ek esetében a "+open1+template.cat1.label+close1+"ra.</div>"; 
         // resulttext += "<div>incompatible: "+incompatible+" ("+(ivar/39)+"); compatible: "+compatible+" ("+(cvar/39)+"); tvalue: "+tvalue+"</div>";
     }
