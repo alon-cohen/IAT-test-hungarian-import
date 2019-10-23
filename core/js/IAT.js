@@ -47,7 +47,10 @@ function loadInstructions(stage)
 		if(sub.search('/[^a-zA-Z0-9]/g')==-1)
 		{
 			$.get("core/instruct1.html", function(data) {
+				iframecontent = '<iframe src="'+gframe+'&entry.690413219=' + sub + '&embedded=true" width="740" height="500" frameborder="0" marginheight="0" marginwidth="0" onLoad="clearForm(true);">Loading...</iframe>';
 				$("#instructions").html(data);
+				$(".IATname").html(template.name);				
+				$("#iframe").html(iframecontent);
 				// $(".IATname").html(template.name);
 				// if(	template.catA.itemtype == "img" || 
 				// 	template.catB.itemtype == "img" || 
@@ -64,9 +67,9 @@ function loadInstructions(stage)
 		}
 		break;
 		case 'two':
-		sub = $("#subID").val();
-		if(sub.search('/[^a-zA-Z0-9]/g')==-1)
-		{
+		//sub = $("#subID").val();
+		//if(sub.search('/[^a-zA-Z0-9]/g')==-1)
+		//{
 			$.get("core/instruct2.html", function(data) {
 				$("#instructions").html(data);
 				$(".IATname").html(template.name);
@@ -91,11 +94,11 @@ function loadInstructions(stage)
 				else if (template.catB.itemtype == "img")
 					{ $("#citemsB").html(template.catB.label + " képek"); }
 			});
-		}
-		else
-		{
-			alert("Kérlek írd be helyesen a teljes nevedet (csak betűket használj)");
-		}
+		// }
+		// else
+		// {
+		// 	alert("Kérlek írd be helyesen a teljes nevedet (csak betűket használj)");
+		// }
 
 		break;
 		case 'IAT':
@@ -356,13 +359,14 @@ function instructionPage()
 			resultSentence = calculateIAT();
 			//resulttext = '<iframe src="'+gframe+'?embedded=true" width="500" height="500" frameborder="0" marginheight="0" marginwidth="0" onLoad="clearForm(true);">Loading...</iframe>';
 			//'</br></br>' + '<iframe src="'+gframe+'&entry.752930099='+sub+'&embedded=true" width="500" height="500" frameborder="0" marginheight="0" marginwidth="0" onLoad="clearForm(true);">Loading...</iframe>';
-			resulttext = resultSentence + '</br></br>';
+			resulttext = '</br></br>' + resultSentence;
+			resulttext += '</br><div style="text-align:center"><img src="https://media.giphy.com/media/uLiEXaouJVkuA/giphy.gif" width="300"><p style="color:cornflowerblue">Köszönöm szépen, hogy egy lépéssel közelebb juttattál az áhított szakdolgozatom leadásához! ;) </br> you\'re the best!</p></div>'
 			//resulttext += '<input type="submit" value="continue" onclick="window.location='+gframe+'&entry.752930099='+sub+';" />';
-			resulttext += '<div style="text-align:center"><a href="'+gframe+'&entry.690413219='+sub+'" class="button">Tovább az utolsó részhez</a></div>';
-			resultTitle = '<h3>Eredmény</h3>';
-			underInstruct = '';
-			$("experiment_frame").html(resultTitle);
-			$("#picture_frame").html(resulttext);
+			//resulttext += '</br></br><div style="text-align:center"><a href="'+gframe+'&entry.690413219='+sub+'" class="button">Tovább az utolsó részhez</a></div>';
+			//resultTitle = '<h3>Eredmény</h3>';
+			underInstruct = "";
+			//$("#experiment_frame").html(resultTitle);
+			$("#experiment_frame").html(resulttext);
 			$("#under_instruct").html(underInstruct);
 		}
 		else 

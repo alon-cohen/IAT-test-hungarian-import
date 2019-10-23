@@ -1,17 +1,22 @@
+<div class="instructions-box">
+	<div class="box-header">
+		<h2> Implicit Asszociációs Teszt (IAT) </h2>
+		<h3><span class='IATname'></span></h3>
+	</div>
+	<div class="box-body">
+		<div style="text-align: center" id="iframe"></div>
+		<p style="text-align: center; color: red"><b>Kérlek, csak a kérdőv befejeztével kattints a narancssárga gombra, amikor az utasítás azt kéri.</b></p>
+		</br></br>
 
-<h2><span class='IATname'></span> - Implicit Asszociációs Teszt (IAT)</h2>
+		<input type="submit" value="Végig értem a kérdőíven" onclick="gformValidation()">
 
-<p>SZIA! Üdvözöllek a tesztben, a neve ne ijesszen meg, izgalmas lesz! :)</p>
-
-<p><b>Egy gyors bevezetés:</b> </br>
-Az IAT teszt lényege, hogy két szembenálló kategória (Magyar termék - Import termék), illetve bizonyos értékelő jelzők (mint jó és rossz) között méri az asszociációd erősségét, és hogy tudatalatt milyen mértékben kapcsolod össze a fenti csoportokat.  
-</br></br>
-<b>Három feladatot fogsz kapni:</b> </br>
-Két rövid kérdőív és egy IAT teszt, ahol szavakat és képeket kell majd kategóriákba rendezni, az utasítás szerint, amilyen gyorsan csak tudod. 
-Amikor végeztél a teszttel, pár másodperc után meg is kapod a teszt eredményeit.
-A feladat körülbelül 7 percig fog tartani és próbáld minden zavaró tényezőt kizárva, egy csendes helyen elvégezni a tesztet.
-
-</p>
-
-<input type="submit" value="Tovább"  onclick='loadInstructions("two");'>
-    
+		<script>
+			function gformValidation() {
+  				var choice = confirm("Biztosan végeztél a kérdőív mind a hat részével?\n\nHa végeztél, kattints az 'OK' gombra.\nHa mégsem végeztél, kattints a 'Cancel' gombra.");
+  				if (choice == true) {
+					loadInstructions("two");    
+  				}
+			}
+		</script>
+	</div>
+</div>
