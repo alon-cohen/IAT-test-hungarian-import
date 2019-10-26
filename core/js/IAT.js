@@ -359,14 +359,15 @@ function instructionPage()
 			resultSentence = calculateIAT();
 			//resulttext = '<iframe src="'+gframe+'?embedded=true" width="500" height="500" frameborder="0" marginheight="0" marginwidth="0" onLoad="clearForm(true);">Loading...</iframe>';
 			//'</br></br>' + '<iframe src="'+gframe+'&entry.752930099='+sub+'&embedded=true" width="500" height="500" frameborder="0" marginheight="0" marginwidth="0" onLoad="clearForm(true);">Loading...</iframe>';
-			resulttext = '</br></br>' + resultSentence;
-			resulttext += '</br><div style="text-align:center"><img src="https://media.giphy.com/media/uLiEXaouJVkuA/giphy.gif" width="300"><p style="color:cornflowerblue">Köszönöm szépen, hogy egy lépéssel közelebb juttattál az áhított szakdolgozatom leadásához! ;) </br> you\'re the best!</p></div>'
+			// resulttext = '</br></br>' + resultSentence;
+			resulttext = '</br></br></br></br></br><div style="margin-left:20px;margin-right:20px;text-align:center"><p style="font-size:14px;color:cornflowerblue">Köszönöm szépen, hogy egy lépéssel közelebb juttattál az áhított szakdolgozatom leadásához! ;) </br> you\'re the best!</p><img src="https://media.giphy.com/media/uLiEXaouJVkuA/giphy.gif" width="300"></div>'
 			//resulttext += '<input type="submit" value="continue" onclick="window.location='+gframe+'&entry.752930099='+sub+';" />';
 			//resulttext += '</br></br><div style="text-align:center"><a href="'+gframe+'&entry.690413219='+sub+'" class="button">Tovább az utolsó részhez</a></div>';
-			//resultTitle = '<h3>Eredmény</h3>';
+			// resultTitle = '<h3>Eredmény</h3>';
+			resultTitle = '<br>' + resultSentence;
 			underInstruct = "";
-			//$("#experiment_frame").html(resultTitle);
-			$("#experiment_frame").html(resulttext);
+			$("#header").html(resultTitle);
+			$("#picture_frame").html(resulttext);
 			$("#under_instruct").html(underInstruct);
 		}
 		else 
